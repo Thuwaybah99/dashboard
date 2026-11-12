@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a4b">
+  <meta name="description" content="Bravo Wallet Transfer Analysis Board: interactive service performance and customer analysis powered by Tableau Public.">
+  <title>Wallet Transfer Analysis Board | Bravo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#services" aria-label="Bravo Wallet Transfer Analysis Board home">
+        <span class="brand-icon" aria-hidden="true">B</span>
+        <span><strong>BRAVO</strong><small>ANALYTICS</small></span>
+      </a>
+      <div class="topright"><span class="live-dot" aria-hidden="true"></span><span>Connected to Tableau Public</span></div>
+    </header>
+    <main class="main">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="eyebrow-line"></span> WALLET TRANSFER / PERFORMANCE INTELLIGENCE</div>
+        <h1 id="page-title">Wallet Transfer <span>Analysis Board</span></h1>
+        <p>Explore Bravo wallet transfer performance and customer behavior in a single interactive workspace. Analyze transaction value, volume, average ticket, service trends, customer activity, geographic distribution and wallet classes using Tableau visualizations.</p>
+        <div class="hero-meta"><span class="meta-chip">Analysis period: starting Nov 1, 2026</span><span class="meta-chip" id="period-label">Dates selected: Nov 1 – Nov 11, 2026</span></div>
+      </section>
+      <nav class="tabs" aria-label="Analysis sections" role="tablist">
+        <button id="tab-services" role="tab" aria-selected="true" aria-controls="panel-services" class="tab active" data-tab="services"><span class="tab-icon">▥</span> Services Analysis <span class="tab-count">6 charts</span></button>
+        <button id="tab-customers" role="tab" aria-selected="false" aria-controls="panel-customers" tabindex="-1" class="tab" data-tab="customers"><span class="tab-icon">♧</span> Customer Analysis <span class="tab-count">7 charts</span></button>
+      </nav>
+      <section class="filterbar" aria-label="Dashboard filters">
+        <div class="filters-heading"><div><strong>Explore the data</strong><small>Controls apply to compatible Tableau sheets</small></div></div>
+        <div class="filter-controls">
+          <label class="field"><span>From date</span><input id="date-from" type="date" value="2026-11-01" min="2026-11-01"></label>
+          <label class="field"><span>To date</span><input id="date-to" type="date" value="2026-11-11" min="2026-11-01"></label>
+          <label class="field" id="service-field"><span>Service type</span><select id="service-filter"><option value="all">All services</option><option value="Send Wallet Transfer">Wallet Transfer</option><option value="Receive via QR">QR Payment</option><option value="Transfer Via NFC">NFC Payment</option><option value="Bravo Cash Code">Cash Code</option></select></label>
+          <label class="field" id="class-field" hidden><span>Wallet class</span><select id="class-filter"><option value="all">All wallet classes</option><option value="Standard">Standard</option><option value="Silver">Silver</option><option value="Gold Plus">Gold Plus</option><option value="Agent">Agent</option><option value="Merchant">Merchant</option><option value="Pos">POS</option></select></label>
+          <div class="filter-buttons"><button id="apply-filters" class="button button-primary">Apply filters</button><button id="reset-filters" class="button button-subtle">Reset</button></div>
+        </div>
+        <p class="filter-message" id="filter-message" role="status" aria-live="polite">Charts load from Tableau Public. Date and category filtering depends on the fields available in each published sheet.</p>
+      </section>
+      <section id="panel-services" role="tabpanel" aria-labelledby="tab-services" class="tab-panel">
+        <div class="section-intro"><div><div class="section-kicker">01 / SERVICES</div><h2>Services performance</h2><p>Understand the value and volume of transactions, and how each service contributes to activity.</p></div><span class="section-meta">6 Tableau visualizations</span></div>
+        <div class="chart-grid kpi-grid" id="service-kpis"></div>
+        <div class="section-divider"><div><h3>Service composition</h3><p>Transaction value contribution across services</p></div></div>
+        <div class="chart-grid" id="service-composition"></div>
+        <div class="section-divider"><div><h3>Daily trends</h3><p>Track performance across the selected dates</p></div></div>
+        <div class="chart-grid" id="service-trends"></div>
+      </section>
+      <section id="panel-customers" role="tabpanel" aria-labelledby="tab-customers" class="tab-panel" hidden>
+        <div class="section-intro"><div><div class="section-kicker">02 / CUSTOMERS</div><h2>Customer intelligence</h2><p>Explore customer registrations, activity, wallet class behavior and geographic distribution.</p></div><span class="section-meta">7 Tableau visualizations</span></div>
+        
+        <div class="chart-grid customer-kpi-grid" id="customer-overview"></div>
+        <div class="section-divider"><div><h3>Daily customer activity</h3><p>Daily active users</p></div></div>
+        <div class="chart-grid" id="customer-activity"></div>
+        <div class="section-divider"><div><h3>Wallet class distribution &amp; performance</h3><p>Customer mix versus share of transaction value</p></div></div>
+        <div class="chart-grid" id="customer-classes"></div>
+        <div class="section-divider"><div><h3>Geographic analysis</h3><p>Customer distribution by state</p></div></div>
+        <div class="chart-grid" id="customer-location"></div>
+      </section>
+    </main>
+    <footer class="footer"><span>BRAVO / WALLET TRANSFER ANALYSIS BOARD</span><span>Visualizations served by Tableau Public · Published data may refresh on Tableau's schedule</span></footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
